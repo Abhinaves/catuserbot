@@ -82,7 +82,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
                 remwarns=remwarns,
             )
         else:
-            USER_BOT_WARN_ZERO = f"**You were spamming my master** {my_mention}**'s inbox, henceforth you have been blocked.**"
+            USER_BOT_WARN_ZERO = f"**You were spamming my master** {my_mention}**'s inbox, henceforth you have been blocked⚠️**"
         msg = await event.reply(USER_BOT_WARN_ZERO)
         await event.client(functions.contacts.BlockRequest(chat.id))
         the_message = f"#BLOCKED_PM\
@@ -120,11 +120,11 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
         )
     elif gvarstatus("pmmenu") is None:
         USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me. 
-You have {warns}/{totalwarns} warns until you get blocked by the CatUserbot.
+You have {warns}/{totalwarns} warns until you get Block😐⚠️.
 Choose an option from below to specify the reason of your message and wait for me to check it. __⬇️"""
     else:
         USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me.
-You have {warns}/{totalwarns} warns until you get blocked by the CatUserbot.
+You have {warns}/{totalwarns} warns until you get Block😐⚠️.
 Don't spam my inbox. say reason and wait until my response.__"""
     addgvar("pmpermit_text", USER_BOT_NO_WARN)
     PM_WARNS[str(chat.id)] += 1
@@ -205,7 +205,7 @@ async def do_pm_options_action(event, chat):
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                             \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Reason:** __He/She didn't opt for any provided options and kept on messaging.__"
+                            \n**Reason:** __He didn't opt for any provided options and kept on messaging.__"
     sqllist.rm_from_list("pmoptions", chat.id)
     try:
         return await event.client.send_message(
@@ -228,7 +228,7 @@ async def do_pm_enquire_action(event, chat):
     if str(chat.id) not in PM_WARNS:
         text = """__Hey! Have some patience. My master has not seen your message yet. \
 My master usually responds to people, though idk about some exceptional users.__
-__My master will respond when he/she comes online, if he/she wants to.__
+__My master will respond when he comes online, if he wants to.__
 **Please do not spam unless you wish to be blocked and reported.**"""
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
@@ -254,7 +254,7 @@ __My master will respond when he/she comes online, if he/she wants to.__
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                 \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She opted for enquire option but didn't wait after being told also and kept on messaging so blocked.__"
+                \n**Reason:** __He opted for enquire option but didn't wait after being told also and kept on messaging so blocked.__"
     sqllist.rm_from_list("pmenquire", chat.id)
     try:
         return await event.client.send_message(
@@ -277,7 +277,7 @@ async def do_pm_request_action(event, chat):
     if str(chat.id) not in PM_WARNS:
         text = """__Hey have some patience. My master has not seen your message yet. \
 My master usually responds to people, though idk about some exceptional users.__
-__My master will respond when he/she comes back online, if he/she wants to.__
+__My master will respond when he comes back online, if he/she wants to.__
 **Please do not spam unless you wish to be blocked and reported.**"""
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
@@ -303,7 +303,7 @@ __My master will respond when he/she comes back online, if he/she wants to.__
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                 \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She opted for the request option but didn't wait after being told also so blocked.__"
+                \n**Reason:** __He opted for the request option but didn't wait after being told also so blocked.__"
     sqllist.rm_from_list("pmrequest", chat.id)
     try:
         return await event.client.send_message(
@@ -326,7 +326,7 @@ async def do_pm_chat_action(event, chat):
     if str(chat.id) not in PM_WARNS:
         text = """__Heyy! I am busy right now I already asked you to wait know. After my work finishes. \
 We can talk but not right know. Hope you understand.__
-__My master will respond when he/she comes back online, if he/she wants to.__
+__My master will respond when He comes back online, if He wants to.__
 **Please do not spam unless you wish to be blocked and reported.**"""
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
@@ -469,7 +469,7 @@ async def you_dm_other(event):
 @catub.tgbot.on(CallbackQuery(data=re.compile(rb"show_pmpermit_options")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
-        text = "Idoit these options are for users who messages you, not for you"
+        text = "Idoit these options are for users who messages you, not for you🖕"
         return await event.answer(text, cache_time=0, alert=True)
     text = f"""Ok, Now you are accessing the availabe menu of my master, {mention}.
 __Let's make this smooth and let me know why you are here.__
