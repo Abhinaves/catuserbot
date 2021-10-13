@@ -103,15 +103,15 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"Hey!😐 {mention},\
+            start_msg = f"Hey!😊 {mention},\
                         \nI am {my_mention}'s assistant bot🤸‍♂️.\
-                        \nYou can contact to my master from here.\
-                        \n\nJoin👉 [Click Here](https://t.me/VazhaSupport)"
+                        \nYou can contact to my master from here😌.\
+                        \n\nDon't Spam Here 🔞⚠️"
         buttons = [
             (
                 Button.url("Master🧘‍♂️", "https://t.me/Abhinave_s"),
                 Button.url(
-                    "About👅",
+                    "Join🔰",
                     "https://t.me/AbhinaveSuresh",
                 ),
             )
